@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/goal_bottom_nav"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_sentiment_satisfied_alt_24"
+        
+        android:title="@string/goal"/>
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/playlist_bottom_nav"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_music_note_24"
+        android:title="@string/playlist"/>
+</menu>
