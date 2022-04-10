@@ -33,6 +33,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         return new GoalViewHolder(view);
     }
 
+    // cosa inserisco nel ViewHolder
     @Override
     public void onBindViewHolder(@NonNull GoalViewHolder holder, int position) {
         if(mCursor.moveToNext()) {
@@ -54,6 +55,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         if(this.mCursor == null) return 0;
         return mCursor.getCount();
     }
+
     public void swapCursor(Cursor newCursor) {
         if (newCursor == mCursor) {
             return;
@@ -67,6 +69,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             mCursor = null;
         }
     }
+    // classe del view Holder
     class GoalViewHolder extends RecyclerView.ViewHolder {
 
         private TextView maxAccValue;

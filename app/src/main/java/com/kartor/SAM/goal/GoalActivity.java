@@ -64,6 +64,7 @@ public class GoalActivity extends AppCompatActivity implements NavigationBarView
         }
         return false;
     }
+    // gestione della UI in favore del caricamento dei dati
     private void showErrorMessage() {
         binding.recyclerGoal.setVisibility(View.INVISIBLE);
         binding.errorText.setVisibility(View.VISIBLE);
@@ -76,11 +77,12 @@ public class GoalActivity extends AppCompatActivity implements NavigationBarView
         binding.voidListText.setVisibility(View.VISIBLE);
         binding.recyclerGoal.setVisibility(View.INVISIBLE);
     }
-    // recycler view
+    // creo l'asinc task e l'avvio, inoltre avvio la parte di caricamento della UI
     private void loadGoalData() {
         showGoalDataView();
         new GoalActivity.getGoalsDataRecycler().execute();
     }
+
     private class getGoalsDataRecycler extends AsyncTask<Void,Void,Cursor> {
 
         @Override
@@ -91,6 +93,7 @@ public class GoalActivity extends AppCompatActivity implements NavigationBarView
 
         @Override
         protected Cursor doInBackground(Void... voids) {
+            // richiedo che nel viewModel sia presente il cursore con tutte le sessioni sportive
             sportSessionViewModel.getAllSportSession();
             try {
                 return sportSessionViewModel.getCursorSportSession();
@@ -104,6 +107,7 @@ public class GoalActivity extends AppCompatActivity implements NavigationBarView
         protected void onPostExecute(Cursor cursor) {
             super.onPostExecute(cursor);
             binding.pbLoadingIndicator.setVisibility(View.INVISIBLE);
+            // se il cursore che ho ottenuto non è vuoto mostro i dati
             if(cursor != null) {
                 if(cursor.getCount() > 0) {
                     showGoalDataView();

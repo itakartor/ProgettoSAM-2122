@@ -36,6 +36,7 @@ public class SummaryActivity extends AppCompatActivity implements View.OnClickLi
         binding.saveButton.setOnClickListener(this);
         binding.discardButton.setOnClickListener(this);
         Intent intent = getIntent();
+        // valori ricevuti dalla RunningActivity
         this.maxValueAccelerometer = intent.getFloatExtra(getString(R.string.maxValueAccelerometer),0);
         this.minValueAccelerometer = intent.getFloatExtra(getString(R.string.minValueAccelerometer),0);
         this.stepCounter = intent.getIntExtra(getString(R.string.stepCounter),0);

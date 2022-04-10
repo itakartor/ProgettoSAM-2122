@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kartor.SAM.databinding.ActivitySensorBinding;
-
+//TODO: eliminare questa activity
 public class SensorActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager mSensorManager;

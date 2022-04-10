@@ -43,18 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(binding.getRoot());
         binding.bottomNavigation.setOnItemSelectedListener(this);
         binding.bottomNavigation.getMenu().getItem(1).setChecked(true);
-
-        //RecyclerView musicListRecyclerView;
-        Log.d("URI EXTERNAL CONTENT", String.valueOf(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI));
-
-
         binding.imagePlayButton.setOnClickListener(this);
 
+        Log.d("URI EXTERNAL CONTENT", String.valueOf(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI));
 
         // richiesta dei permessi all'utente per leggere i file esterni
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 EXTERNAL_STORAGE_PERMISSION_CODE);
-
+        // TODO: si dovrebbe inserire un controlla accurato in caso che i permessi non vengano forniti dall'utente
         try {
             storeAudio();
         } catch (IOException e) {
@@ -77,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // do query for all audio
         mCursor = contentResolver.query(uriExt, null, selection, null, sortOrder);
         // for all audio save in db if is absent
-        boolean primo = true;
         if (mCursor != null && mCursor.getCount() > 0) {
             while (mCursor.moveToNext()) {
                 String data = mCursor.getString(mCursor.getColumnIndex(MediaStore.Audio.Media.DATA));
